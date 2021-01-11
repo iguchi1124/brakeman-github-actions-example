@@ -1,0 +1,11 @@
+name: Brakeman
+on: workflow_dispatch
+jobs:
+  brakeman:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Brakeman
+        run: |
+          docker pull presidentbeef/brakeman
+          docker run -v "$(pwd)":/code presidentbeef/brakeman --color
